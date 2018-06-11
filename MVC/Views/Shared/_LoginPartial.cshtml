@@ -1,0 +1,21 @@
+﻿@if (Session["CurrentUser"] != null)
+{
+
+    @Html.AntiForgeryToken()
+
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            @Html.ActionLink("Hello " + Session["CurrentUser"] + " !", "Manage", "CustomAccount", routeValues: null, htmlAttributes: new { title = "Manage" })
+        </li>
+        <li>@Html.ActionLink("Log Off", "LogOff", "CustomAccount", routeValues: null, htmlAttributes: new { title = "logOff" })</li>
+        @*<li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>*@
+    </ul>
+
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Register", "Register", "CustomAccount", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "CustomAccount", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}
